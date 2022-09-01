@@ -23,7 +23,7 @@ struct ContentView: View {
                 case 0:
                     Text("Page 1")
                 case 1:
-                    Text("Page 2")
+                    LeetcodeView()
                 case 2:
                     Text("Page 3")
                 case 3:
@@ -48,5 +48,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct LeetcodeView: View {
+    var body: some View {
+        Text("Leetcode View")
     }
 }
