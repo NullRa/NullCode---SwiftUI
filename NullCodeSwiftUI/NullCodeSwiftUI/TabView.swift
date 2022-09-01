@@ -9,8 +9,12 @@ import SwiftUI
 
 struct TabView: View {
     @Binding var index: Int
+    @Binding var showTab3: Bool
+    @Binding var showTab4: Bool
+    @Binding var showTab5: Bool
     var body: some View {
         HStack{
+            Spacer()
             Button {
                 index = 0
             } label: {
@@ -22,24 +26,31 @@ struct TabView: View {
             } label: {
                 TabItemView(tabItemType: .tab2, selected: self.index == 1)
             }
-            Spacer()
-            Button {
-                index = 2
-            } label: {
-                TabItemView(tabItemType: .tab3, selected: self.index == 2)
+            if showTab3 {
+                Spacer()
+                Button {
+                    index = 2
+                } label: {
+                    TabItemView(tabItemType: .tab3, selected: self.index == 2)
+                }
+            }
+            if showTab4 {
+                Spacer()
+                Button {
+                    index = 3
+                } label: {
+                    TabItemView(tabItemType: .tab4, selected: self.index == 3)
+                }
+            }
+            if showTab5 {
+                Spacer()
+                Button {
+                    index = 4
+                } label: {
+                    TabItemView(tabItemType: .tab5, selected: self.index == 4)
+                }
             }
             Spacer()
-            Button {
-                index = 3
-            } label: {
-                TabItemView(tabItemType: .tab4, selected: self.index == 3)
-            }
-            Spacer()
-            Button {
-                index = 4
-            } label: {
-                TabItemView(tabItemType: .tab5, selected: self.index == 4)
-            }
         }
         .padding()
         .background(Color(red: 188/255, green: 216/255, blue: 193/255))
@@ -49,7 +60,7 @@ struct TabView: View {
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView(index: .constant(0))
+        TabView(index: .constant(0), showTab3: .constant(false), showTab4: .constant(false), showTab5: .constant(false))
     }
 }
 

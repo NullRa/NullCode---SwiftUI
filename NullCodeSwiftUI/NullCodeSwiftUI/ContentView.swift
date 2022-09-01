@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State var tabSelection = 0
+    @State var showingSettingView = false
+    @State var showTab3: Bool = false
+    @State var showTab4: Bool = false
+    @State var showTab5: Bool = false
     
     var body: some View {
         VStack {
-            NavView()
+            NavView(showingSettingView: $showingSettingView)
             Spacer()
             ZStack{
                 switch tabSelection {
@@ -31,7 +35,12 @@ struct ContentView: View {
                 }
             }
             Spacer()
-            TabView(index: $tabSelection)
+            TabView(index: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5)
+        }
+        .fullScreenCover(isPresented: $showingSettingView) {
+            showingSettingView = false
+        } content: {
+            SettingView(tabSelection: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5)
         }
     }
 }
@@ -39,23 +48,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-struct NavView: View {
-    var body: some View {
-        HStack {
-            Spacer()
-            Text("Navigation View")
-            Spacer()
-            Button {
-                
-            } label: {
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 30,height: 30)
-            }
-        }
-        .padding()
     }
 }
