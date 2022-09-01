@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Navigation View")
+            NavView()
             Spacer()
             ZStack{
                 switch tabSelection {
@@ -42,4 +42,20 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
+struct NavView: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Navigation View")
+            Spacer()
+            Button {
+                
+            } label: {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 30,height: 30)
+            }
+        }
+        .padding()
+    }
+}
