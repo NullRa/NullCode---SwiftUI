@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct NavView: View {
+    @Binding var navTitle: String
     @Binding var showingSettingView: Bool
     var body: some View {
         HStack {
             Spacer()
-            Text("Navigation View")
+            Text(navTitle)
+                .font(.largeTitle)
+                .padding(.leading,50)
             Spacer()
             Button {
                 showingSettingView = true
@@ -20,14 +23,14 @@ struct NavView: View {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: 30,height: 30)
+                    .padding(.trailing)
             }
         }
-        .padding()
     }
 }
 
 struct NavView_Previews: PreviewProvider {
     static var previews: some View {
-        NavView(showingSettingView: .constant(false))
+        NavView(navTitle: .constant("Me"), showingSettingView: .constant(false))
     }
 }

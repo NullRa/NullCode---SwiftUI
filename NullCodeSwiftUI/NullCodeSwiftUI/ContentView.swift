@@ -13,10 +13,11 @@ struct ContentView: View {
     @State var showTab3: Bool = false
     @State var showTab4: Bool = false
     @State var showTab5: Bool = false
+    @State var navTitle: String = "Me"
     
     var body: some View {
         VStack {
-            NavView(showingSettingView: $showingSettingView)
+            NavView(navTitle: $navTitle, showingSettingView: $showingSettingView)
             Spacer()
             ZStack{
                 switch tabSelection {
@@ -35,12 +36,12 @@ struct ContentView: View {
                 }
             }
             Spacer()
-            TabView(index: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5)
+            TabView(index: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5, navTitle: $navTitle)
         }
         .fullScreenCover(isPresented: $showingSettingView) {
             showingSettingView = false
         } content: {
-            SettingView(tabSelection: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5)
+            SettingView(tabSelection: $tabSelection, showTab3: $showTab3, showTab4: $showTab4, showTab5: $showTab5, navTitle: $navTitle)
         }
     }
 }

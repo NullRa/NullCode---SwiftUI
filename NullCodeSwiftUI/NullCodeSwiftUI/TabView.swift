@@ -12,17 +12,20 @@ struct TabView: View {
     @Binding var showTab3: Bool
     @Binding var showTab4: Bool
     @Binding var showTab5: Bool
+    @Binding var navTitle: String
     var body: some View {
         HStack{
             Spacer()
             Button {
                 index = 0
+                navTitle = TabItemType.tab1.rawValue
             } label: {
                 TabItemView(tabItemType: .tab1, selected: self.index == 0)
             }
             Spacer()
             Button {
                 index = 1
+                navTitle = TabItemType.tab2.rawValue
             } label: {
                 TabItemView(tabItemType: .tab2, selected: self.index == 1)
             }
@@ -30,6 +33,7 @@ struct TabView: View {
                 Spacer()
                 Button {
                     index = 2
+                    navTitle = TabItemType.tab3.rawValue
                 } label: {
                     TabItemView(tabItemType: .tab3, selected: self.index == 2)
                 }
@@ -38,6 +42,7 @@ struct TabView: View {
                 Spacer()
                 Button {
                     index = 3
+                    navTitle = TabItemType.tab4.rawValue
                 } label: {
                     TabItemView(tabItemType: .tab4, selected: self.index == 3)
                 }
@@ -46,6 +51,7 @@ struct TabView: View {
                 Spacer()
                 Button {
                     index = 4
+                    navTitle = TabItemType.tab5.rawValue
                 } label: {
                     TabItemView(tabItemType: .tab5, selected: self.index == 4)
                 }
@@ -60,7 +66,7 @@ struct TabView: View {
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView(index: .constant(0), showTab3: .constant(false), showTab4: .constant(false), showTab5: .constant(false))
+        TabView(index: .constant(0), showTab3: .constant(false), showTab4: .constant(false), showTab5: .constant(false), navTitle: .constant("Me"))
     }
 }
 
