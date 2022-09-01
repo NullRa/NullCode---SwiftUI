@@ -15,38 +15,22 @@ struct SettingView: View {
     @Binding var showTab5: Bool
     @Binding var navTitle: String
     var body: some View {
-        VStack{
+        VStack {
             Text("Setting")
                 .padding()
             VStack {
-                HStack{
-                    Spacer()
+                Toggle(isOn: $showTab3) {
                     Text("顯示Test Tab")
-                    Spacer()
-                    Toggle(isOn: $showTab3) {
-                        Text("test1")
-                    }.labelsHidden()
-                    Spacer()
                 }
-                HStack{
-                    Spacer()
+                Toggle(isOn: $showTab4) {
                     Text("顯示Habit Tab")
-                    Spacer()
-                    Toggle(isOn: $showTab4) {
-                        Text("test2")
-                    }.labelsHidden()
-                    Spacer()
                 }
-                HStack{
-                    Spacer()
+                
+                Toggle(isOn: $showTab5) {
                     Text("顯示Others Tab")
-                    Spacer()
-                    Toggle(isOn: $showTab5) {
-                        Text("test3")
-                    }.labelsHidden()
-                    Spacer()
                 }
             }
+            .padding([.leading,.trailing],30)
             Spacer()
             Button {
                 if tabSelection == 4 && showTab5 == false {
